@@ -446,7 +446,7 @@ public:
 
   void parse(
     const std::vector<uint8_t>& in,
-    const uint16_t& offset);
+    const uint32_t& offset);
 };
 
 

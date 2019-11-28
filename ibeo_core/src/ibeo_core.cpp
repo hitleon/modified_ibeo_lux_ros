@@ -309,7 +309,7 @@ void ScanPoint2208::parse(const std::vector<uint8_t>& in, const uint16_t& offset
   echo_pulse_width = read_be<uint16_t>(in, offset + 8);
 }
 
-void ScanPoint2209::parse(const std::vector<uint8_t>& in, const uint16_t& offset)
+void ScanPoint2209::parse(const std::vector<uint8_t>& in, const uint32_t& offset)
 {
   x_position = read_be<float>(in, offset);
   y_position = read_be<float>(in, offset + 4);
@@ -1037,7 +1037,9 @@ std::vector<Point3DL> ScanData2209::get_scan_points()
 
   for (ScanPoint2209 sp : scan_point_list)
   {
-    if (sp.echo == 0 && sp.layer < 4 && !sp.transparent && !sp.ground && !sp.dirt && !sp.precipitation)
+    // if (sp.echo == 0 && sp.layer < 4 && !sp.transparent && !sp.ground && !sp.dirt && !sp.precipitation)
+    // Lux8L
+    if (sp.echo == 0 && sp.layer < 8 && !sp.transparent && !sp.ground && !sp.dirt && !sp.precipitation)
     {
       Point3DL p3d;
 
